@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    hcloud = {
+      source  = "hetznercloud/hcloud"
+      version = "~> 1.23.0"
+    }
+  }
+}
+
 resource "hcloud_ssh_key" "default" {
   name       = var.ssh_public_key_name
   public_key = file(var.ssh_public_key)
