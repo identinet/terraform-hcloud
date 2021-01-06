@@ -1,5 +1,5 @@
 output "server" {
-  value = server
+  value = hcloud_server.server
 }
 
 output "server_ips" {
