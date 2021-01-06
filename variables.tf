@@ -10,12 +10,12 @@ variable "servers" {}
 
 # Example attributes, see more at
 # https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/resources/server:
-# name
-# image
-# server_type
-# location
-# backups
-# user_data_file for user_data
+# - name
+# - image
+# - server_type
+# - location
+# - backups
+# - user_data_file for user_data
 
 variable "ssh_private_key" {}
 
