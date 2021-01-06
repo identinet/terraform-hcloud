@@ -1,14 +1,12 @@
 terraform {
   required_providers {
+    # Attention, providers can't be declared in modules
+    # https://www.terraform.io/docs/modules/providers.html
     hcloud = {
       source  = "hetznercloud/hcloud"
       version = "~> 1.23.0"
     }
   }
-}
-
-provider "hcloud" {
-  token = var.hcloud_token
 }
 
 resource "hcloud_ssh_key" "default" {

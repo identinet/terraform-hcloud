@@ -1,6 +1,23 @@
 # terraform-hcloud
 A simple and opinionated module to create servers in Hetzner Cloud and - by default - to provision the servers with Ansible first and then install Kubernetes with Rancher, but both of these are optional. See the variables file for the available configuration settings.
 
+Add the provider to your `main.tf`:
+
+```
+terraform {
+  required_providers {
+    hcloud = {
+      source  = "hetznercloud/hcloud"
+      version = "~> 1.23.0"
+    }
+  }
+}
+
+provider "hcloud" {
+  token = var.hcloud_token
+}
+```
+
 Example config:
 
 ```
