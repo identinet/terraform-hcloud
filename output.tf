@@ -1,5 +1,8 @@
 output "server" {
-  value = hcloud_server.server
+  value = {
+    for server in hcloud_server.server :
+    server.name => server
+  }
 }
 
 output "server_ips" {
