@@ -1,3 +1,7 @@
+output "server" {
+  value = server
+}
+
 output "server_ips" {
   value = {
     for server in hcloud_server.server :
@@ -6,5 +10,5 @@ output "server_ips" {
 }
 
 output "floating_ip" {
-  value = hcloud_floating_ip.default.ip_address
+  value = hcloud_floating_ip.default
 }
