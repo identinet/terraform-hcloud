@@ -1,5 +1,11 @@
 # terraform-hcloud
-A simple and opinionated module to create servers in Hetzner Cloud and - by default - to provision the servers with Ansible first and then install Kubernetes with Rancher, but both of these are optional. See the variables file for the available configuration settings.
+
+A simple and opinionated module to create servers in Hetzner Cloud and -
+by default - to provision the servers with Ansible first and then
+install Kubernetes with Rancher, but both of these are optional. See the
+variables file for the available configuration settings.
+
+## Usage
 
 Add the provider to your `main.tf`:
 
@@ -40,6 +46,7 @@ servers = {
     location           = "nbg1"
     backups            = true
     roles              = "--etcd --controlplane" # to deploy Kubernetes with Rancher
+    user_data_file     = "cloud-init.conf"
   },
 
   2 = {
@@ -50,10 +57,15 @@ servers = {
     location           = "nbg1"
     backups            = true
     roles              = "--worker" # to deploy Kubernetes with Rancher
+    user_data_file     = "cloud-init.conf"
   },
 
   ...
 }
 ```
 
+## Development
 
+- Hetzner Cloud service: https://hetzner.com/
+- Hetzner Cloud API Documentation: https://docs.hetzner.cloud/
+- Hetzner Terraform Cloud Provider Documentation: https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs
