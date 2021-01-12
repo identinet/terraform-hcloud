@@ -55,7 +55,7 @@ resource "hcloud_load_balancer_target" "load_balancer_target" {
   for_each = hcloud_server.server
 
   type             = "server"
-  load_balancer_id = hcloud_load_balancer.load_balancer.id
+  load_balancer_id = hcloud_load_balancer.default.id
   server_id        = each.value.id
 }
 
