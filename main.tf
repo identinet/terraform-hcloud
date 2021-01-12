@@ -36,12 +36,6 @@ resource "hcloud_load_balancer" "default" {
   name               = "load-balancer-servers"
   load_balancer_type = var.load_balancer_type
   location           = var.load_balancer_location
-  target {
-    for_each = hcloud_server.server
-
-    type      = "server"
-    server_id = each.value.id
-  }
 }
 
 resource "hcloud_load_balancer_network" "load_balancer_network" {
@@ -55,6 +49,14 @@ resource "hcloud_load_balancer_service" "load_balancer_service" {
   protocol         = "tcp"
   listen_port      = 443
   destination_port = 6443
+}
+
+resource "hcloud_load_balancer_target" "load_balancer_target" {
+  for_each = hcloud_server.server
+
+  type             = "server"
+  load_balancer_id = hcloud_load_balancer.load_balancer.id
+  server_id        = each.value.id
 }
 
 resource "hcloud_server" "server" {
