@@ -38,7 +38,7 @@ resource "hcloud_load_balancer" "default" {
   location           = var.load_balancer_location
   target {
     type      = "server"
-    server_id = [for k, _ in hcloud_server.server : k.id]
+    server_id = [for _, v in hcloud_server.server : v.id]
   }
 }
 
