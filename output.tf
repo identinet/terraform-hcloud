@@ -9,6 +9,10 @@ output "server_ips" {
   }
 }
 
-output "floating_ip" {
-  value = hcloud_floating_ip.default
+# output "floating_ip" {
+#   value = hcloud_floating_ip.default
+# }
+
+output "lb-servers" {
+  value = load_balancer.ipv4
 }

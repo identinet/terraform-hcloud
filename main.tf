@@ -26,10 +26,33 @@ resource "hcloud_network_subnet" "default" {
   ip_range     = var.private_ip_range
 }
 
-resource "hcloud_floating_ip" "default" {
-  type          = "ipv4"
-  home_location = var.hcloud_location
-  name          = var.floating_ip_name
+# resource "hcloud_floating_ip" "default" {
+#   type          = "ipv4"
+#   home_location = var.hcloud_location
+#   name          = var.floating_ip_name
+# }
+
+resource "hcloud_load_balancer" "default" {
+  name               = "lb-servers-1"
+  load_balancer_type = var.load_balancer_type
+  location           = var.load_balancer_location
+  target {
+    type      = "server"
+    server_id = [for k, _ in hcloud_server.server : k.id]
+  }
+}
+
+resource "hcloud_load_balancer_network" "load_balancer_network" {
+  load_balancer_id = hcloud_load_balancer.default.id
+  network_id       = hcloud_network.default.id
+  ip               = var.load_balancer_ipv4
+}
+
+resource "hcloud_load_balancer_service" "load_balancer_service" {
+  load_balancer_id = hcloud_load_balancer.default.id
+  protocol         = "tcp"
+  listen_port      = 443
+  destination_port = 6443
 }
 
 resource "hcloud_server" "server" {
