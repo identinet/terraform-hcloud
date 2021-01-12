@@ -40,7 +40,7 @@ resource "hcloud_load_balancer" "default" {
     for_each = hcloud_server.server
 
     type      = "server"
-    server_id = each.id
+    server_id = each.value.id
   }
 }
 
