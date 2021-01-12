@@ -14,5 +14,5 @@ output "server_ips" {
 # }
 
 output "lb_servers_ip" {
-  value = load_balancer.ipv4
+  value = hcloud_load_balancer.default.ipv4
 }

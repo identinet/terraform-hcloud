@@ -33,7 +33,7 @@ resource "hcloud_network_subnet" "default" {
 # }
 
 resource "hcloud_load_balancer" "default" {
-  name               = "lb_servers_1"
+  name               = "load-balancer-servers"
   load_balancer_type = var.load_balancer_type
   location           = var.load_balancer_location
   target {
