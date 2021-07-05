@@ -4,7 +4,7 @@ terraform {
     # https://www.terraform.io/docs/modules/providers.html
     hcloud = {
       source  = "hetznercloud/hcloud"
-      version = "~> 1.23.0"
+      version = "~> 1.27.2"
     }
   }
 }
