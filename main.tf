@@ -58,6 +58,10 @@ resource "hcloud_load_balancer_target" "load_balancer_target" {
   load_balancer_id = hcloud_load_balancer.default.id
   server_id        = each.value.id
   use_private_ip   = true
+
+  depends_on = [
+    hcloud_server_network.server_network
+  ]
 }
 
 resource "hcloud_server" "server" {
