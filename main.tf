@@ -75,6 +75,10 @@ resource "hcloud_server" "server" {
   ssh_keys    = [var.ssh_public_key_name]
   user_data   = each.value.user_data_file != "" ? file(each.value.user_data_file) : ""
 
+  depends_on = [
+    hcloud_ssh_key.default
+  ]
+
   # provisioner "remote-exec" {
   #   inline = [var.install_ansible_dependencies ? var.ansible_dependencies_install_command : "sleep 0"]
   #   connection {
