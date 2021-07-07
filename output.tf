@@ -13,6 +13,10 @@ output "server_ips" {
 #   value = hcloud_floating_ip.default
 # }
 
-output "load_balancer_ip" {
+output "load_balancer_ipv6" {
   value = hcloud_load_balancer.default.ipv4
+}
+
+output "load_balancer_ipv6" {
+  value = hcloud_load_balancer.default.ipv6
 }

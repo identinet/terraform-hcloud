@@ -44,21 +44,21 @@ resource "hcloud_load_balancer_network" "load_balancer_network" {
   ip               = var.load_balancer_ipv4
 }
 
-resource "hcloud_load_balancer_service" "load_balancer_service" {
+resource "hcloud_load_balancer_service" "load_balancer_service_6443" {
   load_balancer_id = hcloud_load_balancer.default.id
   protocol         = "tcp"
   listen_port      = 6443
   destination_port = 6443
 }
 
-resource "hcloud_load_balancer_service" "load_balancer_service" {
+resource "hcloud_load_balancer_service" "load_balancer_service_443" {
   load_balancer_id = hcloud_load_balancer.default.id
   protocol         = "tcp"
   listen_port      = 443
   destination_port = 443
 }
 
-resource "hcloud_load_balancer_service" "load_balancer_service" {
+resource "hcloud_load_balancer_service" "load_balancer_service_80" {
   load_balancer_id = hcloud_load_balancer.default.id
   protocol         = "tcp"
   listen_port      = 80
