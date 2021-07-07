@@ -47,8 +47,22 @@ resource "hcloud_load_balancer_network" "load_balancer_network" {
 resource "hcloud_load_balancer_service" "load_balancer_service" {
   load_balancer_id = hcloud_load_balancer.default.id
   protocol         = "tcp"
-  listen_port      = 443
+  listen_port      = 6443
   destination_port = 6443
+}
+
+resource "hcloud_load_balancer_service" "load_balancer_service" {
+  load_balancer_id = hcloud_load_balancer.default.id
+  protocol         = "tcp"
+  listen_port      = 443
+  destination_port = 443
+}
+
+resource "hcloud_load_balancer_service" "load_balancer_service" {
+  load_balancer_id = hcloud_load_balancer.default.id
+  protocol         = "tcp"
+  listen_port      = 80
+  destination_port = 80
 }
 
 resource "hcloud_load_balancer_target" "load_balancer_target" {
