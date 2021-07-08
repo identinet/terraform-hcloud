@@ -17,9 +17,7 @@ variable "servers" {}
 # - backups
 # - user_data_file for user_data
 
-variable "ssh_private_key" {}
-
-variable "ssh_public_key" {}
+variable "ssh_keys" {}
 
 ############################
 #  Optional configuration  #
@@ -31,10 +29,6 @@ variable "hcloud_location" {
 
 variable "private_ip_range" {
   default = "10.0.0.0/16"
-}
-
-variable "ssh_public_key_name" {
-  default = "default"
 }
 
 variable "private_network_name" {
