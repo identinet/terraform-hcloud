@@ -88,7 +88,7 @@ resource "hcloud_server" "server" {
   server_type = each.value.server_type
   location    = each.value.location
   backups     = each.value.backups
-  ssh_keys    = hcloud_ssh_key.default[*].name
+  ssh_keys    = [for k in hcloud_ssh_key.default : k.name]
   user_data   = each.value.user_data_file != "" ? file(each.value.user_data_file) : ""
 
   depends_on = [
