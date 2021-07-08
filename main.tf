@@ -10,9 +10,10 @@ terraform {
 }
 
 resource "hcloud_ssh_key" "default" {
-  for_each   = var.ssh_keys
-  name       = each.name
-  public_key = file(each.public_key)
+  for_each = var.ssh_keys
+
+  name       = each.value.name
+  public_key = file(each.value.public_key)
 }
 
 resource "hcloud_network" "default" {
